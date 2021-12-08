@@ -1,98 +1,103 @@
 import React, { useState, useEffect } from "react";
 
+import { Search } from "@bigbinary/neeto-icons";
 import EmptyNotesListImage from "images/EmptyNotesList";
-import { Button, PageLoader } from "neetoui/v2";
-import { Container, Header, SubHeader } from "neetoui/v2/layouts";
+import { Button, PageLoader, Input } from "neetoui/v2";
+import { Container, Header } from "neetoui/v2/layouts";
 
 import notesApi from "apis/notes";
 import EmptyState from "components/Common/EmptyState";
 
+import Card from "./Card";
 import DeleteAlert from "./DeleteAlert";
-import NoteTable from "./NoteTable";
+import NoteMenuBar from "./NoteMenuBar";
 import NewNotePane from "./Pane/CreateNote";
 
 const Notes = () => {
-  const [loading, setLoading] = useState(true);
-  const [showNewNotePane, setShowNewNotePane] = useState(false);
-  const [showDeleteAlert, setShowDeleteAlert] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedNoteIds, setSelectedNoteIds] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isNoteMenuBarOpen, setIsNoteMenuBarOpen] = useState(true);
+  const [isNewNotePaneOpen, setIsNewNotePaneOpen] = useState(false);
+  const [noteIdToDelete, setNoteIdToDelete] = useState(0);
   const [notes, setNotes] = useState([]);
 
-  useEffect(() => {
-    fetchNotes();
-  }, []);
+  useEffect(() => fetchNotes(), []);
 
   const fetchNotes = async () => {
     try {
-      setLoading(true);
-      const { data } = await notesApi.fetch();
-      setNotes(data.notes);
+      setIsLoading(true);
+      const {
+        data: { notes },
+      } = await notesApi.fetch();
+      setNotes(notes);
     } catch (error) {
       logger.error(error);
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   };
 
-  if (loading) {
+  if (isLoading) {
     return <PageLoader />;
   }
 
   return (
-    <Container>
-      <Header
-        title="Notes"
-        actionBlock={
-          <Button
-            onClick={() => setShowNewNotePane(true)}
-            label="Add New Note"
-            icon="ri-add-line"
-          />
-        }
-      />
+    <>
       {notes.length ? (
         <>
-          <SubHeader
-            searchProps={{
-              value: searchTerm,
-              onChange: e => setSearchTerm(e.target.value),
-              clear: () => setSearchTerm(""),
-            }}
-            deleteButtonProps={{
-              onClick: () => setShowDeleteAlert(true),
-              disabled: !selectedNoteIds.length,
-            }}
-          />
-          <NoteTable
-            setSelectedNoteIds={setSelectedNoteIds}
-            notes={notes}
-            fetchNotes={fetchNotes}
-          />
+          <NoteMenuBar isNoteMenuBarOpen={isNoteMenuBarOpen} />
+          <Container>
+            <Header
+              title="All Notes"
+              menuBarToggle={() => setIsNoteMenuBarOpen(!isNoteMenuBarOpen)}
+              actionBlock={
+                <div className="flex w-full space-x-2">
+                  <Input
+                    className="w-80"
+                    placeholder="Search Name, Email, Phone Number, Etc."
+                    prefix={<Search />}
+                  />
+                  <Button
+                    onClick={() => setIsNewNotePaneOpen(true)}
+                    label="Add Note"
+                    icon="ri-add-line"
+                  />
+                </div>
+              }
+            />
+            <div className="w-full space-y-3">
+              {notes.map((note, index) => (
+                <Card
+                  key={index}
+                  note={note}
+                  setNoteIdToDelete={setNoteIdToDelete}
+                />
+              ))}
+            </div>
+          </Container>
         </>
       ) : (
         <EmptyState
           image={EmptyNotesListImage}
           title="Looks like you don't have any notes!"
           subtitle="Add your notes to send customized emails to them."
-          primaryAction={() => setShowNewNotePane(true)}
+          primaryAction={() => setIsNewNotePaneOpen(true)}
           primaryActionLabel="Add New Note"
         />
       )}
       <NewNotePane
-        showPane={showNewNotePane}
-        setShowPane={setShowNewNotePane}
+        isNewNotePaneOpen={isNewNotePaneOpen}
+        setIsNewNotePaneOpen={setIsNewNotePaneOpen}
         fetchNotes={fetchNotes}
       />
-      {showDeleteAlert && (
+      {noteIdToDelete && (
         <DeleteAlert
-          selectedNoteIds={selectedNoteIds}
-          onClose={() => setShowDeleteAlert(false)}
+          noteIdToDelete={noteIdToDelete}
+          setNoteIdToDelete={setNoteIdToDelete}
+          onClose={() => setNoteIdToDelete(0)}
           refetch={fetchNotes}
-          setSelectedNoteIds={setSelectedNoteIds}
         />
       )}
-    </Container>
+    </>
   );
 };
 
