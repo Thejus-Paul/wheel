@@ -89,7 +89,7 @@ const Notes = () => {
         setIsNewNotePaneOpen={setIsNewNotePaneOpen}
         fetchNotes={fetchNotes}
       />
-      {noteIdToDelete && (
+      {noteIdToDelete !== 0 && (
         <DeleteAlert
           noteIdToDelete={noteIdToDelete}
           setNoteIdToDelete={setNoteIdToDelete}
