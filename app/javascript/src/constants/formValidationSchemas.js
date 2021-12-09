@@ -26,5 +26,10 @@ export default {
   notesForm: Yup.object().shape({
     title: Yup.string().required("Title is required"),
     description: Yup.string().required("Description is required"),
+    contact: Yup.object().required("Assigned Contact is required"),
+    tags: Yup.array()
+      .min(1, "Must have at least one tag")
+      .required()
+      .nullable(),
   }),
 };
