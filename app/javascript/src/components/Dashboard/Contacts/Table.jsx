@@ -1,12 +1,16 @@
 import React from "react";
 
 import { MenuHorizontal } from "neetoIcons";
-import { Table, Pagination, Dropdown, Avatar } from "neetoui/v2";
-import PropTypes from "prop-types";
+import {
+  Table as ContactTable,
+  Pagination,
+  Dropdown,
+  Avatar,
+} from "neetoui/v2";
 
 import { USER_IMAGE_URL, DEFAULT_COLUMN_DATA } from "./constants";
 
-const ContactTable = ({ contacts, setContactIdToDelete }) => {
+const Table = ({ contacts, setContactIdToDelete }) => {
   const columnData = [
     {
       title: "Name & Role",
@@ -53,7 +57,11 @@ const ContactTable = ({ contacts, setContactIdToDelete }) => {
 
   return (
     <>
-      <Table className="h-full" rowData={contacts} columnData={columnData} />
+      <ContactTable
+        className="h-full"
+        rowData={contacts}
+        columnData={columnData}
+      />
       <div className="flex justify-end">
         <Pagination count={100} pageNo={3} pageSize={10} />
       </div>
@@ -61,9 +69,4 @@ const ContactTable = ({ contacts, setContactIdToDelete }) => {
   );
 };
 
-ContactTable.propTypes = {
-  contacts: PropTypes.array.isRequired,
-  setContactIdToDelete: PropTypes.func.isRequired,
-};
-
-export default ContactTable;
+export default Table;
