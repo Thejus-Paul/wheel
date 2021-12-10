@@ -1,9 +1,4 @@
-import React from "react";
-
-import { UserCircle } from "@bigbinary/neeto-icons";
-
-const NotesIcon = () => <i className="text-2xl ri-file-text-line" />;
-const SettingsIcon = () => <i className="text-2xl ri-settings-2-line" />;
+import { UserCircle, Notes, Settings } from "neetoIcons";
 
 export const APP_NAME = "Wheel";
 
@@ -15,7 +10,7 @@ export const SIDENAV_LINKS = [
   {
     label: "Notes",
     to: "/notes",
-    icon: NotesIcon,
+    icon: Notes,
   },
   {
     label: "Contacts",
@@ -25,7 +20,7 @@ export const SIDENAV_LINKS = [
   {
     label: "Settings",
     to: "/settings",
-    icon: SettingsIcon,
+    icon: Settings,
     items: [
       {
         label: "My Profile",

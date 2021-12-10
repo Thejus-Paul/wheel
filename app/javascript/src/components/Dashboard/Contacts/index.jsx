@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 
-import { Search } from "@bigbinary/neeto-icons";
+import { Search } from "neetoIcons";
 import { Input, Button, Alert, Toastr } from "neetoui/v2";
 import { Container, Header } from "neetoui/v2/layouts";
 
 import EmptyState from "components/Common/EmptyState";
 
 import { SAMPLE_CONTACTS, FORMATTED_DATE } from "./constants";
-import ContactMenuBar from "./ContactMenuBar";
-import CreateContact from "./Pane/CreateContact";
+import MenuBar from "./MenuBar";
+import NewContact from "./NewContact";
 import Table from "./Table";
 
 const Contacts = () => {
@@ -38,7 +38,7 @@ const Contacts = () => {
     <>
       {contacts.length ? (
         <>
-          <ContactMenuBar isMenuBarOpen={isMenuBarOpen} />
+          <MenuBar isMenuBarOpen={isMenuBarOpen} />
           <Container>
             <Header
               title="All Contacts"
@@ -74,7 +74,7 @@ const Contacts = () => {
           primaryActionLabel="Add New Contact"
         />
       )}
-      <CreateContact
+      <NewContact
         handleSubmit={handleSubmit}
         isCreatePaneOpen={isCreatePaneOpen}
         setIsCreatePaneOpen={setIsCreatePaneOpen}

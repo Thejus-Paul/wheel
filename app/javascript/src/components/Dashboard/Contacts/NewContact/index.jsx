@@ -1,11 +1,10 @@
 import React from "react";
 
 import { Pane, Typography } from "neetoui/v2";
-import PropTypes from "prop-types";
 
 import Form from "./Form";
 
-const CreateContact = ({
+const NewContact = ({
   handleSubmit,
   isCreatePaneOpen,
   setIsCreatePaneOpen,
@@ -24,10 +23,4 @@ const CreateContact = ({
   );
 };
 
-CreateContact.propTypes = {
-  handleSubmit: PropTypes.func.isRequired,
-  isCreatePaneOpen: PropTypes.bool.isRequired,
-  setIsCreatePaneOpen: PropTypes.func.isRequired,
-};
-
-export default CreateContact;
+export default NewContact;

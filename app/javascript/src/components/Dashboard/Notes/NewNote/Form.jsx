@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-import { Check } from "@bigbinary/neeto-icons";
 import { Formik, Form } from "formik";
+import { Check } from "neetoIcons";
 import { Button, Pane } from "neetoui/v2";
 import { Input, Textarea, Select } from "neetoui/v2/formik";
 
@@ -27,7 +27,7 @@ export default function NoteForm({ onClose, refetch, note, isEdit }) {
     }
   };
 
-  const populateSelectOptions = options =>
+  const optionValues = options =>
     options.map(tag => ({
       label: tag,
       value: tag,
@@ -45,39 +45,35 @@ export default function NoteForm({ onClose, refetch, note, isEdit }) {
         <Form className="w-full">
           <Pane.Body className="space-y-6">
             <Input
-              label="Title"
+              label="Title*"
               name="title"
               className="flex-grow-0 w-full"
               placeholder="Enter the note title"
               size="large"
-              required
             />
             <Textarea
-              label="Description"
+              label="Description*"
               name="description"
               className="flex-grow-0 w-full"
               placeholder="Enter the note description"
               rows={2}
-              required
             />
             <Select
-              label="Assigned Contact"
+              label="Assigned Contact*"
               name="contact"
               className="flex-grow-0 w-full"
               placeholder="Select contact"
               isSearchable
-              options={populateSelectOptions(INITIAL_CONTACT_VALUES)}
-              required
+              options={optionValues(INITIAL_CONTACT_VALUES)}
             />
             <Select
-              label="Tags"
+              label="Tags*"
               name="tags"
               className="flex-grow-0 w-full"
               placeholder="Select tags"
               isMulti
               isSearchable
-              options={populateSelectOptions(INITIAL_TAG_VALUES)}
-              required
+              options={optionValues(INITIAL_TAG_VALUES)}
             />
           </Pane.Body>
           <Pane.Footer>

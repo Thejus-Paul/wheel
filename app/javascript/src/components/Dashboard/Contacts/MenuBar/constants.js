@@ -1,4 +1,4 @@
-import { Search, Settings, Plus } from "@bigbinary/neeto-icons";
+import { Search, Settings, Plus } from "neetoIcons";
 
 const DEFAULT_STATUSES = [
   {
