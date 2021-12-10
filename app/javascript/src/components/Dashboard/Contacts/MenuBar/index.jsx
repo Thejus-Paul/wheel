@@ -1,8 +1,7 @@
 import React from "react";
 
 import { Typography } from "neetoui/v2";
-import { MenuBar } from "neetoui/v2/layouts";
-import PropTypes from "prop-types";
+import { MenuBar as ContactMenuBar } from "neetoui/v2/layouts";
 
 import {
   DEFAULT_STATUSES,
@@ -12,10 +11,10 @@ import {
   TAGS_ICON_PROPS,
 } from "./constants";
 
-const ContactMenuBar = ({ isMenuBarOpen }) => (
-  <MenuBar showMenu={isMenuBarOpen} title="Contacts">
+const MenuBar = ({ isMenuBarOpen }) => (
+  <ContactMenuBar showMenu={isMenuBarOpen} title="Contacts">
     {DEFAULT_STATUSES.map(({ label, count }, index) => (
-      <MenuBar.Block
+      <ContactMenuBar.Block
         key={index}
         label={label}
         count={count}
@@ -23,7 +22,7 @@ const ContactMenuBar = ({ isMenuBarOpen }) => (
       />
     ))}
 
-    <MenuBar.SubTitle iconProps={SEGMENTS_ICON_PROPS}>
+    <ContactMenuBar.SubTitle iconProps={SEGMENTS_ICON_PROPS}>
       <Typography
         component="h4"
         style="h5"
@@ -32,13 +31,13 @@ const ContactMenuBar = ({ isMenuBarOpen }) => (
       >
         Segments
       </Typography>
-    </MenuBar.SubTitle>
+    </ContactMenuBar.SubTitle>
 
     {DEFAULT_SEGMENTS.map(({ label, count }, index) => (
-      <MenuBar.Block key={index} label={label} count={count} />
+      <ContactMenuBar.Block key={index} label={label} count={count} />
     ))}
 
-    <MenuBar.SubTitle iconProps={TAGS_ICON_PROPS}>
+    <ContactMenuBar.SubTitle iconProps={TAGS_ICON_PROPS}>
       <Typography
         component="h4"
         style="h5"
@@ -47,16 +46,12 @@ const ContactMenuBar = ({ isMenuBarOpen }) => (
       >
         Tags
       </Typography>
-    </MenuBar.SubTitle>
+    </ContactMenuBar.SubTitle>
 
     {INITIAL_TAGS.map(({ label, count }, index) => (
-      <MenuBar.Block key={index} label={label} count={count} />
+      <ContactMenuBar.Block key={index} label={label} count={count} />
     ))}
-  </MenuBar>
+  </ContactMenuBar>
 );
 
-ContactMenuBar.propTypes = {
-  isMenuBarOpen: PropTypes.bool.isRequired,
-};
-
-export default ContactMenuBar;
+export default MenuBar;

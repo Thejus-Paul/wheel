@@ -7,7 +7,7 @@ import { Container, Header } from "neetoui/v2/layouts";
 import EmptyState from "components/Common/EmptyState";
 
 import { SAMPLE_CONTACTS, FORMATTED_DATE } from "./constants";
-import ContactMenuBar from "./ContactMenuBar";
+import MenuBar from "./MenuBar";
 import CreateContact from "./Pane/CreateContact";
 import Table from "./Table";
 
@@ -38,7 +38,7 @@ const Contacts = () => {
     <>
       {contacts.length ? (
         <>
-          <ContactMenuBar isMenuBarOpen={isMenuBarOpen} />
+          <MenuBar isMenuBarOpen={isMenuBarOpen} />
           <Container>
             <Header
               title="All Contacts"
