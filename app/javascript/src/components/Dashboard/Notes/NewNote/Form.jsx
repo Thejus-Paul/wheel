@@ -27,7 +27,7 @@ export default function NoteForm({ onClose, refetch, note, isEdit }) {
     }
   };
 
-  const populateSelectOptions = options =>
+  const optionValues = options =>
     options.map(tag => ({
       label: tag,
       value: tag,
@@ -64,7 +64,7 @@ export default function NoteForm({ onClose, refetch, note, isEdit }) {
               className="flex-grow-0 w-full"
               placeholder="Select contact"
               isSearchable
-              options={populateSelectOptions(INITIAL_CONTACT_VALUES)}
+              options={optionValues(INITIAL_CONTACT_VALUES)}
             />
             <Select
               label="Tags*"
@@ -73,7 +73,7 @@ export default function NoteForm({ onClose, refetch, note, isEdit }) {
               placeholder="Select tags"
               isMulti
               isSearchable
-              options={populateSelectOptions(INITIAL_TAG_VALUES)}
+              options={optionValues(INITIAL_TAG_VALUES)}
             />
           </Pane.Body>
           <Pane.Footer>

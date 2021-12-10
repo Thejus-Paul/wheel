@@ -4,7 +4,6 @@ import { Formik, Form as FormikForm } from "formik";
 import { Check } from "neetoIcons";
 import { Button, Pane } from "neetoui/v2";
 import { Input, Select } from "neetoui/v2/formik";
-import PropTypes from "prop-types";
 
 import {
   INITIAL_CONTACT_VALUES,
@@ -12,8 +11,8 @@ import {
   INITIAL_ROLE_VALUES,
 } from "./constants";
 
-const Form = ({ onClose, handleSubmit, initialContactValues }) => {
-  const populateSelectOptions = options =>
+const Form = ({ onClose, handleSubmit }) => {
+  const optionValues = options =>
     options.map(tag => ({
       label: tag,
       value: tag,
@@ -21,7 +20,7 @@ const Form = ({ onClose, handleSubmit, initialContactValues }) => {
 
   return (
     <Formik
-      initialValues={initialContactValues}
+      initialValues={INITIAL_CONTACT_VALUES}
       validationSchema={VALIDATION_SCHEMA}
       onSubmit={handleSubmit}
     >
@@ -54,7 +53,7 @@ const Form = ({ onClose, handleSubmit, initialContactValues }) => {
               name="role"
               className="flex-grow-0 w-full"
               placeholder="Select role"
-              options={populateSelectOptions(INITIAL_ROLE_VALUES)}
+              options={optionValues(INITIAL_ROLE_VALUES)}
               onChange={e => setFieldValue("role", e.value)}
             />
           </Pane.Body>
@@ -77,16 +76,6 @@ const Form = ({ onClose, handleSubmit, initialContactValues }) => {
       )}
     </Formik>
   );
-};
-
-Form.propTypes = {
-  onClose: PropTypes.func.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
-  initialContactValues: PropTypes.object,
-};
-
-Form.defaultProps = {
-  initialContactValues: INITIAL_CONTACT_VALUES,
 };
 
 export default Form;
