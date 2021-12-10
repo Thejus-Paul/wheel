@@ -11,7 +11,7 @@ import EmptyState from "components/Common/EmptyState";
 import Card from "./Card";
 import DeleteAlert from "./DeleteAlert";
 import MenuBar from "./MenuBar";
-import NewNotePane from "./Pane/CreateNote";
+import NewNote from "./NewNote";
 
 const Notes = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -84,7 +84,7 @@ const Notes = () => {
           primaryActionLabel="Add New Note"
         />
       )}
-      <NewNotePane
+      <NewNote
         isNewNotePaneOpen={isNewNotePaneOpen}
         setIsNewNotePaneOpen={setIsNewNotePaneOpen}
         fetchNotes={fetchNotes}

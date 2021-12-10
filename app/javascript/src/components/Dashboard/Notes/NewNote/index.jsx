@@ -6,11 +6,7 @@ import formInitialValues from "constants/formInitialValues";
 
 import Form from "./Form";
 
-export default function NewNotePane({
-  fetchNotes,
-  isNewNotePaneOpen,
-  setIsNewNotePaneOpen,
-}) {
+const NewNote = ({ fetchNotes, isNewNotePaneOpen, setIsNewNotePaneOpen }) => {
   const onClose = () => setIsNewNotePaneOpen(false);
 
   return (
@@ -28,4 +24,6 @@ export default function NewNotePane({
       />
     </Pane>
   );
-}
+};
+
+export default NewNote;
