@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 
 import EmptyNotesListImage from "images/EmptyNotesList";
 import { Search } from "neetoIcons";
-import { Button, PageLoader, Input } from "neetoui/v2";
+import { Button, PageLoader, Input, Typography } from "neetoui/v2";
 import { Container, Header } from "neetoui/v2/layouts";
 
 import notesApi from "apis/notes";
 import EmptyState from "components/Common/EmptyState";
 
 import Card from "./Card";
+import { DEFAULT_USER_VALUES } from "./constants";
 import DeleteAlert from "./DeleteAlert";
 import MenuBar from "./MenuBar";
 import NewNote from "./NewNote";
@@ -65,12 +66,21 @@ const Notes = () => {
               }
             />
             <div className="w-full space-y-3">
-              {notes.map((note, index) => (
-                <Card
-                  key={index}
-                  note={note}
-                  setNoteIdToDelete={setNoteIdToDelete}
-                />
+              {notes.map(({ id, title, created_at, description }, index) => (
+                <Card key={index}>
+                  <Card.Header
+                    title={title}
+                    onDelete={() => setNoteIdToDelete(id)}
+                  />
+                  <Card.Body>
+                    <Typography style="body1">{description}</Typography>
+                  </Card.Body>
+                  <hr />
+                  <Card.Footer
+                    createdAt={created_at}
+                    userValues={DEFAULT_USER_VALUES}
+                  />
+                </Card>
               ))}
             </div>
           </Container>
