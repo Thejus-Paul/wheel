@@ -1,6 +1,6 @@
 import React from "react";
 
-import { MenuHorizontal } from "@bigbinary/neeto-icons";
+import { MenuHorizontal } from "neetoIcons";
 import { Table, Pagination, Dropdown, Avatar } from "neetoui/v2";
 import PropTypes from "prop-types";
 

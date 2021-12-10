@@ -1,7 +1,7 @@
 import React from "react";
 
-import { MenuVertical, Clock } from "@bigbinary/neeto-icons";
 import * as dayjs from "dayjs";
+import { MenuVertical, Clock } from "neetoIcons";
 import { Dropdown, Typography, Tag, Avatar, Tooltip } from "neetoui/v2";
 
 import { DEFAULT_USER_VALUES } from "./constants";

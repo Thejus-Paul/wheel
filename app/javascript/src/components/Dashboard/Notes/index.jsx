@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-import { Search } from "@bigbinary/neeto-icons";
 import EmptyNotesListImage from "images/EmptyNotesList";
+import { Search } from "neetoIcons";
 import { Button, PageLoader, Input } from "neetoui/v2";
 import { Container, Header } from "neetoui/v2/layouts";
 

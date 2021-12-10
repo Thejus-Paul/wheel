@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-import { Check } from "@bigbinary/neeto-icons";
 import { Formik, Form } from "formik";
+import { Check } from "neetoIcons";
 import { Button, Pane } from "neetoui/v2";
 import { Input, Textarea, Select } from "neetoui/v2/formik";
 

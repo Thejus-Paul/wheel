@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Search } from "@bigbinary/neeto-icons";
+import { Search } from "neetoIcons";
 import { Input, Button, Alert, Toastr } from "neetoui/v2";
 import { Container, Header } from "neetoui/v2/layouts";
 

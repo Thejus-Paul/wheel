@@ -1,6 +1,6 @@
 import React from "react";
 
-import { UserCircle } from "@bigbinary/neeto-icons";
+import { UserCircle } from "neetoIcons";
 
 const NotesIcon = () => <i className="text-2xl ri-file-text-line" />;
 const SettingsIcon = () => <i className="text-2xl ri-settings-2-line" />;
