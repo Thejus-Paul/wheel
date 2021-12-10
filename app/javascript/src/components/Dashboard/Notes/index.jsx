@@ -10,7 +10,7 @@ import EmptyState from "components/Common/EmptyState";
 
 import Card from "./Card";
 import DeleteAlert from "./DeleteAlert";
-import NoteMenuBar from "./NoteMenuBar";
+import MenuBar from "./MenuBar";
 import NewNotePane from "./Pane/CreateNote";
 
 const Notes = () => {
@@ -44,7 +44,7 @@ const Notes = () => {
     <>
       {notes.length ? (
         <>
-          <NoteMenuBar isNoteMenuBarOpen={isNoteMenuBarOpen} />
+          <MenuBar isNoteMenuBarOpen={isNoteMenuBarOpen} />
           <Container>
             <Header
               title="All Notes"

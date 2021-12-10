@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Typography } from "neetoui/v2";
-import { MenuBar } from "neetoui/v2/layouts";
+import { MenuBar as NoteMenuBar } from "neetoui/v2/layouts";
 
 import {
   DEFAULT_STATUSES,
@@ -11,10 +11,10 @@ import {
   TAGS_ICON_PROPS,
 } from "./constants";
 
-const NoteMenuBar = ({ isNoteMenuBarOpen }) => (
-  <MenuBar showMenu={isNoteMenuBarOpen} title="Notes">
+const MenuBar = ({ isNoteMenuBarOpen }) => (
+  <NoteMenuBar showMenu={isNoteMenuBarOpen} title="Notes">
     {DEFAULT_STATUSES.map(({ label, count }, index) => (
-      <MenuBar.Block
+      <NoteMenuBar.Block
         key={index}
         label={label}
         count={count}
@@ -22,7 +22,7 @@ const NoteMenuBar = ({ isNoteMenuBarOpen }) => (
       />
     ))}
 
-    <MenuBar.SubTitle iconProps={SEGMENTS_ICON_PROPS}>
+    <NoteMenuBar.SubTitle iconProps={SEGMENTS_ICON_PROPS}>
       <Typography
         component="h4"
         style="h5"
@@ -31,13 +31,13 @@ const NoteMenuBar = ({ isNoteMenuBarOpen }) => (
       >
         Segments
       </Typography>
-    </MenuBar.SubTitle>
+    </NoteMenuBar.SubTitle>
 
     {DEFAULT_SEGMENTS.map(({ label, count }, index) => (
-      <MenuBar.Block key={index} label={label} count={count} />
+      <NoteMenuBar.Block key={index} label={label} count={count} />
     ))}
 
-    <MenuBar.SubTitle iconProps={TAGS_ICON_PROPS}>
+    <NoteMenuBar.SubTitle iconProps={TAGS_ICON_PROPS}>
       <Typography
         component="h4"
         style="h5"
@@ -46,12 +46,12 @@ const NoteMenuBar = ({ isNoteMenuBarOpen }) => (
       >
         Tags
       </Typography>
-    </MenuBar.SubTitle>
+    </NoteMenuBar.SubTitle>
 
     {INITIAL_TAGS.map(({ label, count }, index) => (
-      <MenuBar.Block key={index} label={label} count={count} />
+      <NoteMenuBar.Block key={index} label={label} count={count} />
     ))}
-  </MenuBar>
+  </NoteMenuBar>
 );
 
-export default NoteMenuBar;
+export default MenuBar;
