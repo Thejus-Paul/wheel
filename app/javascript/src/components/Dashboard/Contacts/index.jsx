@@ -8,7 +8,7 @@ import EmptyState from "components/Common/EmptyState";
 
 import { SAMPLE_CONTACTS, FORMATTED_DATE } from "./constants";
 import MenuBar from "./MenuBar";
-import CreateContact from "./Pane/CreateContact";
+import NewContact from "./NewContact";
 import Table from "./Table";
 
 const Contacts = () => {
@@ -74,7 +74,7 @@ const Contacts = () => {
           primaryActionLabel="Add New Contact"
         />
       )}
-      <CreateContact
+      <NewContact
         handleSubmit={handleSubmit}
         isCreatePaneOpen={isCreatePaneOpen}
         setIsCreatePaneOpen={setIsCreatePaneOpen}
